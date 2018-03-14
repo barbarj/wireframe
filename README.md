@@ -1,2 +1,2 @@
-# fdf
-Given a map of point altitudes, render a 3d projection of that map.
+# Wireframe
+Given a map of point altitudes, render a 3d wireframe of that map.
