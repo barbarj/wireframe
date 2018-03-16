@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 00:23:03 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/16 00:45:32 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void			*fdf_draw_line(t_fdf_point2d *p1, t_fdf_point2d *p2,
 */
 void			fdf_usage_error(void);
 void			fdf_fileopen_error(char *filename);
+void			fdf_shortline_error();
 
 #endif

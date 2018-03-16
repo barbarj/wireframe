@@ -6,11 +6,12 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 00:19:11 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/16 00:41:42 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <unistd.h>
 #include "../inc/fdf.h"
 
 int main(int argc, char **argv)
