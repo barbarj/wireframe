@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/09 16:40:51 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 00:10:44 by rhallste         ###   ########.fr       */
+/*   Created: 2018/03/15 23:55:57 by rhallste          #+#    #+#             */
+/*   Updated: 2018/03/16 00:33:57 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdlib.h>
+#include "../libft/inc/libft.h"
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 2000
-# endif
-
-typedef struct		s_fdb
+void	fdf_usage_error(void)
 {
-	int				fd;
-	int				line_len;
-	char			buff[BUFF_SIZE + 1];
-	struct s_fdb	*next;
-}					t_fdb;
+	ft_printf("Usage : ./demo <filename> [ case_size z_size ]\n");
+	exit(EXIT_FAILURE);
+}
 
-int					get_next_line(const int fd, char **line);
+void	fdf_fileopen_error(char *filename)
+{
+	ft_printf("No file %s\n", filename);
+	exit(EXIT_FAILURE);
+}
 
-#endif
+void	fdf_shortline_error()
+{
+	ft_printf("Found wrong line length. Exiting\n");
+	exit(EXIT_FAILURE);
+}
