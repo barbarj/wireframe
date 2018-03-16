@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 00:08:39 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 00:47:46 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/16 01:07:19 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static size_t			array_len(char **words)
 	return count;
 }
 
-static t_fdf_point3d	*get_line(int fd, unsigned int *width, int line_index)
+static t_fdf_point3d	*get_line_points(int fd, unsigned int *width, int line_index)
 {
 	char			*line;
 	t_fdf_point3d	*points;
@@ -34,7 +34,7 @@ static t_fdf_point3d	*get_line(int fd, unsigned int *width, int line_index)
 	unsigned int	i;
 
 	if ((get_next_line(fd, &line)) < 1)
-		return (0);
+		return (NULL);
 	alt_strs = ft_strsplit(line, ' ');
 	if (line_index == 0)
 		*width = array_len(alt_strs);
@@ -58,19 +58,23 @@ static t_fdf_point3d	*get_line(int fd, unsigned int *width, int line_index)
 t_fdf_point3d			**fdf_parse_file(int fd, unsigned int *width,
 									unsigned int *height)
 {
-	t_fdf_point3d **points;
-
+	t_fdf_point3d 	*line_points;
+	t_fdf_point3d	**points;
+	size_t			arr_size_new;
+	size_t			arr_size_old;
+	
 	if (!(points = ft_memalloc(sizeof(t_fdf_point3d *))))
 		return (NULL);
-	*height = 1;
-	points[0] = get_line(fd, width, 0);
-	
-	for (unsigned int i = 0; i < *width; i++)
-		ft_printf("%d ", points[0][i].z);
-	ft_printf("\n");
-	
+	*height = 0;
+	arr_size_old = 0;
+	while ((line_points = get_line_points(fd, width, *height)))
+	{
+		arr_size_new = arr_size_old + sizeof(t_fdf_point3d *);
+		if (!(points = ft_memrealloc((void *)points, arr_size_new, arr_size_old)))
+			return (NULL);
+		arr_size_old = arr_size_new;
+		points[*height] = line_points;
+		(*height)++;
+	}
 	return (points);
-	//get first line and set width;
-	//get remaining lines
-	//set height
 }

@@ -6,14 +6,14 @@
 #    By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/18 09:37:14 by rhallste          #+#    #+#              #
-#    Updated: 2018/03/16 00:40:55 by rhallste         ###   ########.fr        #
+#    Updated: 2018/03/16 01:07:48 by rhallste         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		= 	fdf
 CC			=	gcc
 EXTRA_FLAGS =	-Weverything -Wno-cast-qual
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -g
 
 LIBFT		=	libft/libftprintf.a
 
