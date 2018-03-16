@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/15 22:42:47 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/15 23:15:03 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,18 @@ typedef struct		s_fdf_window
 	unsigned int	height;
 }					t_fdf_window;
 
-typedef struct		s_fdf_matrix3d
+typedef struct		s_fdf_matrix
 {
 	unsigned int	width;
 	unsigned int	height;
-	t_fdf_point3d	**points;
+	t_fdf_point3d	**points3d;
+	t_fdf_point2d	**points2d;
 }					t_fdf_matrix3d;
 
-typedef struct		s_fdf_matrix2d;
-{
-	unsigned int	width;
-	unsigned int	height;
-	t_fdf_point2d	**points;
-}					t_fdf_matrix2d;
-
+/*
+** Parsing
+*/
+t_fdf_point3d	**fdf_parse_file(int fd);
 
 
 #endif
