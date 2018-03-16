@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/15 23:15:03 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/15 23:23:21 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ typedef struct		s_fdf_matrix
 ** Parsing
 */
 t_fdf_point3d	**fdf_parse_file(int fd);
+
+/*
+** Transformations
+*/
+t_fdf_point2d	**fdf_iso_proj(t_fdf_point3d **points3d);
+void			fdf_scale_proj(t_fdf_point2d **points2d, unsigned long factor);
+
+/*
+** Drawing
+*/
+void			*fdf_draw_line(t_fdf_point2d *p1, t_fdf_point2d *p2,
+								void *mlx_ptr, void *win_ptr);
 
 
 #endif
