@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 16:15:30 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 18:53:42 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 01:29:43 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static t_fdf_point2d	calc_proj(t_fdf_point3d point3d)
 	tmp = (point3d.x + (2 * point3d.y) + point3d.z) / sqrt6;
 	proj.y = (unsigned int)ceil(tmp);
 	proj.color = 0xffffff;
-	ft_printf("%u, %u\n", proj.x, proj.y);
 	return (proj);
 }
 
@@ -65,9 +64,9 @@ unsigned long	fdf_calc_scale_factor(unsigned int width, unsigned int height)
 	width *= FDF_POINT_SEP;
 	height *= FDF_POINT_SEP;
 	if (width >= height)
-		return ((FDF_WINWIDTH * 8) / ((unsigned long)width * 10));
+		return ((FDF_WINWIDTH * 9) / ((unsigned long)width * 10));
 	else
-		return ((FDF_WINHEIGHT * 8) / ((unsigned long)height *10));
+		return ((FDF_WINHEIGHT * 9) / ((unsigned long)height *10));
 }
 
 void			fdf_scale_to_window(t_fdf_point3d **points3d, unsigned long factor, unsigned int width, unsigned height)

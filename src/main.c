@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 00:40:39 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 02:44:32 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int main(int argc, char **argv)
 	ctrl.win = mlx_new_window(ctrl.mlx, FDF_WINWIDTH, FDF_WINHEIGHT, "FDF");
 	mlx_key_hook(ctrl.win, handle_key, (void *)&ctrl);
 	fdf_draw_wireframe(&ctrl, &matrix);
-//	draw lines to window
-//	put img to window, 10% winwidth and 10% winheight
 	mlx_loop(ctrl.mlx);
 	return (0);
 }
