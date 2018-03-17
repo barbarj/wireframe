@@ -6,7 +6,7 @@
 #    By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/18 09:37:14 by rhallste          #+#    #+#              #
-#    Updated: 2018/03/16 18:07:48 by rhallste         ###   ########.fr        #
+#    Updated: 2018/03/16 19:20:12 by rhallste         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,6 +16,8 @@ EXTRA_FLAGS =	-Weverything -Wno-cast-qual
 CFLAGS		=	-Wall -Werror -Wextra -g
 
 LIBFT		=	libft/libftprintf.a
+
+MLX			=	minilibx/libmlx.a
 
 FILES		=	main		\
 				parsing 	\
@@ -32,12 +34,16 @@ $(OBJS): $(SRCS)
 $(LIBFT):
 	@make -C libft/
 
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(MLX):
+	@make -C minilibx/
+
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME) -framework OpenGL -framework AppKit
 
 clean:
 	@rm -rf $(OBJS)
 	@make -C libft/ clean
+	@make -C minilibx/ clean
 
 fclean: clean
 	@rm -rf $(NAME)
