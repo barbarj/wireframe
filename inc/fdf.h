@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 18:45:24 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/16 19:47:00 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct		s_fdf_matrix
 	t_fdf_point3d	**points3d;
 	t_fdf_point2d	**points2d;
 }					t_fdf_matrix;
+
+typedef struct		s_fdf_ctrl
+{
+	void			*mlx;
+	void			*win;
+}					t_fdf_ctrl;
 
 /*
 ** Parsing

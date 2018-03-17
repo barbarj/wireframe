@@ -2,3 +2,4 @@ demo
 maps/
 *.o
 ./fdf
+minilibx/libmlx.a
