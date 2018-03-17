@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 00:08:39 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 02:22:33 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 04:26:17 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_fdf_point3d	*get_line_points(int fd, unsigned int *width, int line_inde
 	char			*line;
 	t_fdf_point3d	*points;
 	char			**alt_strs;
+	char			**param_split;
 	unsigned int	i;
 
 	if ((get_next_line(fd, &line)) < 1)
@@ -45,7 +46,9 @@ static t_fdf_point3d	*get_line_points(int fd, unsigned int *width, int line_inde
 	{
 		points[i].x = i * FDF_POINT_SEP;
 		points[i].y = line_index * FDF_POINT_SEP;
-		points[i].z = (ft_atoi(alt_strs[i]) * 10 / FDF_ZMOD) * -1;
+		param_split = ft_strsplit(alt_strs[i], ',');
+		points[i].z = (ft_atoi(param_split[0]) * 10 / FDF_ZMOD) * -1;
+		ft_free_2d_array((void ***)&param_split, (param_split[1]) ? 2 : 1);
 		i++;
 	}
 	ft_free_2d_array((void ***)&alt_strs, i);
