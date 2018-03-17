@@ -6,7 +6,7 @@
 #    By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/18 09:37:14 by rhallste          #+#    #+#              #
-#    Updated: 2018/03/16 01:07:48 by rhallste         ###   ########.fr        #
+#    Updated: 2018/03/16 18:07:48 by rhallste         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,9 +17,10 @@ CFLAGS		=	-Wall -Werror -Wextra -g
 
 LIBFT		=	libft/libftprintf.a
 
-FILES		=	main	\
-				parsing \
-				error	
+FILES		=	main		\
+				parsing 	\
+				error		\
+				transform	
 
 SRCS		=	$(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS		=	$(addprefix src/, $(addsuffix .o, $(FILES)))

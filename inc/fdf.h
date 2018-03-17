@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 00:45:32 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/16 17:52:19 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_fdf_point3d	**fdf_parse_file(int fd, unsigned int *width, unsigned int *height
 /*
 ** Transformations
 */
-t_fdf_point2d	**fdf_iso_proj(t_fdf_point3d **points3d);
+t_fdf_point2d	**fdf_iso_proj(t_fdf_point3d **points3d, unsigned int width, unsigned int height);
 void			fdf_scale_proj(t_fdf_point2d **points2d, unsigned long factor);
 
 /*
