@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 19:47:00 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 00:44:13 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ unsigned long	fdf_calc_scale_factor(unsigned int width, unsigned int height);
 /*
 ** Drawing
 */
-void			*fdf_draw_line(t_fdf_point2d *p1, t_fdf_point2d *p2,
+void			fdf_draw_line(t_fdf_point2d p0, t_fdf_point2d p1,
 								void *mlx_ptr, void *win_ptr);
+void			fdf_draw_wireframe(t_fdf_ctrl *ctrl, t_fdf_matrix *matrix);
 
 /*
 ** Errors

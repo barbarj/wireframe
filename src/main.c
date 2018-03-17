@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/16 19:52:28 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 00:40:39 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	handle_key(int key, void *ctrl_void)
 	t_fdf_ctrl	*ctrl;
 
 	ctrl = (t_fdf_ctrl *)ctrl_void;
-//	mlx_string_put(ctrl->mlx, ctrl->win, 12, 12, 0xffffff, ft_itoa(key));
 	if (key == 53)
 	{
 		mlx_destroy_window(ctrl->mlx, ctrl->win);
@@ -51,9 +50,9 @@ int main(int argc, char **argv)
 	ctrl.mlx = mlx_init();
 	ctrl.win = mlx_new_window(ctrl.mlx, FDF_WINWIDTH, FDF_WINHEIGHT, "FDF");
 	mlx_key_hook(ctrl.win, handle_key, (void *)&ctrl);
-//	mlx image here?
-//	draw lines
-//	mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xffffff);
+	fdf_draw_wireframe(&ctrl, &matrix);
+//	draw lines to window
+//	put img to window, 10% winwidth and 10% winheight
 	mlx_loop(ctrl.mlx);
 	return (0);
 }
