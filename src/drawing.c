@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 18:57:56 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 02:55:39 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 03:49:37 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,9 @@ void	fdf_draw_wireframe(t_fdf_ctrl *ctrl, t_fdf_matrix *matrix)
 		while (w < matrix->width)
 		{
 			if (w + 1 < matrix->width)
-			{
 				fdf_draw_line(matrix->points2d[h][w], matrix->points2d[h][w + 1], ctrl->mlx, ctrl->win);
-			}
 			if (h + 1 < matrix->height)
-			{
-				if (matrix->points3d[h][w].z != 0 && matrix->points3d[h + 1][w].z == 0)
-				{
-					ft_printf("(%u, %u, %i) ->", matrix->points3d[h][w].x, matrix->points3d[h][w].y, matrix->points3d[h][w].z);
-					ft_printf("(%u, %u, %i)\n", matrix->points3d[h + 1][w].x, matrix->points3d[h + 1][w].y, matrix->points3d[h + 1][w].z);
-					ft_printf("\t(%u, %u) -> (%u, %u)\n", matrix->points2d[h][w].x, matrix->points2d[h][w].y,
-							  matrix->points2d[h + 1][w].x, matrix->points2d[h + 1][w].y);
-				}
 				fdf_draw_line(matrix->points2d[h][w], matrix->points2d[h + 1][w], ctrl->mlx, ctrl->win);
-			}
 			w++;
 		}
 		h++;

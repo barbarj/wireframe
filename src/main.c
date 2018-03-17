@@ -6,13 +6,14 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 02:44:32 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 03:55:11 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "../minilibx/mlx.h"
 #include "../libft/inc/libft.h"
 #include "../inc/fdf.h"
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
 {
 	int				fd;
 	t_fdf_matrix	matrix;
-	unsigned long	scale_factor;
+	double			scale_factor;
 	t_fdf_ctrl		ctrl;
 	
 	if (argc < 2)
@@ -44,7 +45,7 @@ int main(int argc, char **argv)
 	matrix.points3d = fdf_parse_file(fd, &(matrix.width), &(matrix.height));
 	close(fd);
 	scale_factor = fdf_calc_scale_factor(matrix.width, matrix.height);
-	ft_printf("sf: %u\n", scale_factor);
+	printf("sf: %f\n", scale_factor);
 	fdf_scale_to_window(matrix.points3d, scale_factor, matrix.width, matrix.height);
 	matrix.points2d = fdf_iso_proj(matrix.points3d, matrix.width, matrix.height);
 	ctrl.mlx = mlx_init();

@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 16:15:30 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 01:29:43 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 04:08:41 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,23 @@ t_fdf_point2d	**fdf_iso_proj(t_fdf_point3d **points3d, unsigned int width, unsig
 	return (points2d);
 }
 
-unsigned long	fdf_calc_scale_factor(unsigned int width, unsigned int height)
+double	fdf_calc_scale_factor(unsigned int width, unsigned int height)
 {
+	double ideal;
+	double ideal_height;
+
 	width *= FDF_POINT_SEP;
 	height *= FDF_POINT_SEP;
-	if (width >= height)
-		return ((FDF_WINWIDTH * 9) / ((unsigned long)width * 10));
-	else
-		return ((FDF_WINHEIGHT * 9) / ((unsigned long)height *10));
+	ideal = ((double)FDF_WINWIDTH / 1.5) / (double)width;
+	ideal_height= (double)FDF_WINHEIGHT / 1.2;
+	if (height * ideal > ideal_height)
+		ideal *= (ideal_height / (height * ideal));
+	return (ideal);
 }
 
-void			fdf_scale_to_window(t_fdf_point3d **points3d, unsigned long factor, unsigned int width, unsigned height)
+void			fdf_scale_to_window(t_fdf_point3d **points3d, double factor, unsigned int width, unsigned height)
 {
-	unsigned int w;
-	
+	unsigned int w;	
 	unsigned int h;
 
 	h = 0;
