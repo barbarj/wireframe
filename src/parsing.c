@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 00:08:39 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 21:45:23 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 22:07:32 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,5 @@ t_fdf_point3d			**fdf_parse_file(int fd, unsigned int *width,
 		points[*height] = line_points;
 		(*height)++;
 	}
-	if (!line_points)
-		fdf_nodata_error();
 	return (points);
 }
