@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 22:27:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 22:27:16 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 22:43:12 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ void					fdf_proj(t_fdf_matrix *matrix)
 	unsigned int	w;
 	unsigned int	h;
 
-	scale_factor = (FDF_WINWIDTH * 7.5)
-					/ (matrix->width * FDF_POINT_SEP * 10.0);
-	offset[0] = (FDF_WINWIDTH / 2)
-					- (matrix->width * FDF_POINT_SEP * scale_factor / 2.0);
-	offset[1] = (FDF_WINHEIGHT * 2 / 3);
+	scale_factor = ((double)FDF_WINWIDTH * 7.5)
+					/ (matrix->width * (double)FDF_POINT_SEP * 10);
+	offset[0] = ((double)FDF_WINWIDTH / 2.0)
+				- (matrix->width * (double)FDF_POINT_SEP * scale_factor / 2.0);
+	offset[1] = ((double)FDF_WINHEIGHT * 2.0) / 3.0;
 	h = 0;
 	while (h < matrix->height)
 	{
 		w = 0;
 		while (w < matrix->width)
 		{
-			matrix->points2d[h][w]
-				= calc_iso_proj(matrix->points3d[h][w], scale_factor);
+			matrix->points2d[h][w] = calc_iso_proj(matrix->points3d[h][w],
+													scale_factor);
 			matrix->points2d[h][w].x += offset[0];
 			matrix->points2d[h][w].y += offset[1];
 			w++;
