@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/17 19:11:03 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 22:13:45 by rhallste         ###   ########.fr       */
+/*   Created: 2018/03/17 22:27:15 by rhallste          #+#    #+#             */
+/*   Updated: 2018/03/17 22:27:16 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <math.h>
 #include "../libft/inc/libft.h"
 #include "../inc/fdf.h"
