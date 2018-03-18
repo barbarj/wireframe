@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 20:47:24 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 21:14:24 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "../libft/inc/libft.h"
 #include "../inc/fdf.h"
 
-static int	handle_key(int key, void *ctrl_void)
+static int				handle_key(int key, void *ctrl_void)
 {
 	t_fdf_ctrl	*ctrl;
 
@@ -31,12 +31,13 @@ static int	handle_key(int key, void *ctrl_void)
 	return (0);
 }
 
-static t_fdf_point2d	**fill_2d_points(unsigned int width, unsigned int height)
+static t_fdf_point2d	**fill_2d_points(unsigned int width,
+										unsigned int height)
 {
 	t_fdf_point2d	**points2d;
 	unsigned int	h;
 
-	if(!(points2d = ft_memalloc(sizeof(t_fdf_point2d *) * height)))
+	if (!(points2d = ft_memalloc(sizeof(t_fdf_point2d *) * height)))
 		return (NULL);
 	h = 0;
 	while (h < height)
@@ -48,12 +49,12 @@ static t_fdf_point2d	**fill_2d_points(unsigned int width, unsigned int height)
 	return (points2d);
 }
 
-int main(int argc, char **argv)
+int						main(int argc, char **argv)
 {
 	int				fd;
 	t_fdf_matrix	matrix;
 	t_fdf_ctrl		ctrl;
-	
+
 	if (argc < 2)
 		fdf_usage_error();
 	if ((fd = open(argv[1], O_RDONLY)) == -1)

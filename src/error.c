@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:57 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 20:51:14 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 21:12:57 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	fdf_fileopen_error(char *filename)
 	exit(EXIT_FAILURE);
 }
 
-void	fdf_shortline_error()
+void	fdf_shortline_error(void)
 {
 	ft_printf("Found wrong line length. Exiting.\n");
 	exit(EXIT_FAILURE);
 }
 
-void	fdf_nodata_error()
+void	fdf_nodata_error(void)
 {
 	ft_printf("No data found.\n");
 	exit(EXIT_FAILURE);
