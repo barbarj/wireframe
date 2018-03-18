@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 20:39:19 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:45:50 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_fdf_ctrl
 ** Parsing
 */
 t_fdf_point3d	**fdf_parse_file(int fd, unsigned int *width, unsigned int *height);
+
 /*
 ** Projections
 */
@@ -77,6 +78,7 @@ void			fdf_draw_wireframe(t_fdf_ctrl *ctrl, t_fdf_matrix *matrix);
 */
 void			fdf_usage_error(void);
 void			fdf_fileopen_error(char *filename);
-void			fdf_shortline_error();
+void			fdf_shortline_error(void);
+void			fdf_nodata_error(void);
 
 #endif

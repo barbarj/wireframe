@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 20:09:50 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:47:24 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int main(int argc, char **argv)
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		fdf_fileopen_error(argv[1]);
 	matrix.points3d = fdf_parse_file(fd, &(matrix.width), &(matrix.height));
+	ft_printf("%p\n", matrix.points3d);
 	close(fd);
 	matrix.points2d = fill_2d_points(matrix.width, matrix.height);
 	fdf_proj(&matrix);
