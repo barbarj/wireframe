@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 19:01:59 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 19:12:17 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:35:50 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ static t_fdf_point3d fdf_rotz(t_fdf_point3d point, double sina, double cosa)
 
 t_fdf_point3d fdf_rot(t_fdf_point3d point, double ang_x, double ang_y, double ang_z)
 {
-	point = fdf_rotx(point, sin(ang_x), cos(ang_x));
-	point = fdf_roty(point, sin(ang_y), cos(ang_y));
-	point = fdf_rotz(point, sin(ang_z), cos(ang_z));
+	if (ang_x)
+		point = fdf_rotx(point, sin(ang_x), cos(ang_x));
+	if (ang_y)
+		point = fdf_roty(point, sin(ang_y), cos(ang_y));
+	if (ang_z)
+		point = fdf_rotz(point, sin(ang_z), cos(ang_z));
 	return (point);
 }
 

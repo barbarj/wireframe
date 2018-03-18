@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 00:08:39 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 20:24:53 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:26:51 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_fdf_point3d			**fdf_parse_file(int fd, unsigned int *width,
 {
 	t_fdf_point3d 	*line_points;
 	t_fdf_point3d	**points;
-	size_t			aorr_size_new;
+	size_t			arr_size_new;
 	size_t			arr_size_old;
 	
 	if (!(points = ft_memalloc(sizeof(t_fdf_point3d *))))

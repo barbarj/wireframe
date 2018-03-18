@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 20:19:26 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:39:19 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ t_fdf_point3d	fdf_rot(t_fdf_point3d point, double ang_x, double ang_y, double an
 /*
 ** Drawing
 */
-void			fdf_draw_line(t_fdf_point2d p0, t_fdf_point2d p1,
-								void *mlx_ptr, void *win_ptr);
+void			fdf_draw_line(t_fdf_point2d p0, t_fdf_point2d p1, t_fdf_ctrl *ctrl);
 void			fdf_draw_wireframe(t_fdf_ctrl *ctrl, t_fdf_matrix *matrix);
 
 /*
