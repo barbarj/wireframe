@@ -3,3 +3,4 @@ maps/
 *.o
 ./fdf
 minilibx/libmlx.a
+*.dSYM
