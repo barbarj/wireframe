@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 18:57:56 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 21:12:12 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 23:01:39 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	draw_line_vert(t_fdf_point2d p0, t_fdf_point2d p1, t_fdf_ctrl *ctrl)
 	error = (2 * dx) - dy;
 	while (p0.y <= p1.y)
 	{
-		mlx_pixel_put(ctrl->mlx, ctrl->win, p0.x, p0.y, 0xffffff);
+		mlx_pixel_put(ctrl->mlx, ctrl->win, p0.x, p0.y, p1.color);
 		if (error > 0)
 		{
 			p0.x += xi;

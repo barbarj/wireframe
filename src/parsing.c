@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 00:08:39 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 22:07:32 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 22:59:39 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ static size_t			array_len(char **words)
 	return (count);
 }
 
+static unsigned int		get_color(char *hex)
+{
+	unsigned int	color;
+	char			*hex_key;
+	int				i;
+	char			*pos;
+	int				len;
+
+	hex_key = "0123456789abcdef";
+	color = 0;
+	len = ft_strlen(hex);
+	i = 0;
+	while (i < len)
+	{
+		pos = ft_strchr(hex_key, hex[i]);
+		color <<= 4;
+		color |= pos - hex_key;
+		i++;
+	}
+	return (color);
+}
+
 static t_fdf_point3d	set_point(unsigned int i, int line_index,
 								char *alt_str)
 {
@@ -36,6 +58,7 @@ static t_fdf_point3d	set_point(unsigned int i, int line_index,
 	point.y = line_index * FDF_POINT_SEP;
 	param_split = ft_strsplit(alt_str, ',');
 	point.z = ft_atoi(param_split[0]) * FDF_POINT_SEP;
+	point.color = (param_split[1]) ? get_color(param_split[1]) : 0xffffff;
 	ft_free_2d_array((void ***)&param_split, (param_split[1]) ? 2 : 1);
 	return (point);
 }
