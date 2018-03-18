@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 03:55:11 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 18:30:47 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int main(int argc, char **argv)
 		fdf_fileopen_error(argv[1]);
 	matrix.points3d = fdf_parse_file(fd, &(matrix.width), &(matrix.height));
 	close(fd);
-	scale_factor = fdf_calc_scale_factor(matrix.width, matrix.height);
+	scale_factor = fdf_calc_scale_factor(matrix.width, matrix.height, FDF_PROJISO);
 	printf("sf: %f\n", scale_factor);
 	fdf_scale_to_window(matrix.points3d, scale_factor, matrix.width, matrix.height);
-	matrix.points2d = fdf_iso_proj(matrix.points3d, matrix.width, matrix.height);
+	matrix.points2d = fdf_proj(matrix.points3d, matrix.width, matrix.height, FDF_PROJMIL);
 	ctrl.mlx = mlx_init();
 	ctrl.win = mlx_new_window(ctrl.mlx, FDF_WINWIDTH, FDF_WINHEIGHT, "FDF");
 	mlx_key_hook(ctrl.win, handle_key, (void *)&ctrl);
