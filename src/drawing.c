@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 18:57:56 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 23:01:39 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/18 00:43:22 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	draw_line_vert(t_fdf_point2d p0, t_fdf_point2d p1, t_fdf_ctrl *ctrl)
 	int				dy;
 	int				error;
 	int				xi;
+	unsigned long	color;
 
+	color = (p1.zval >= p0.zval) ? p1.color : p0.color;
 	dx = p1.x - p0.x;
 	dy = p1.y - p0.y;
 	xi = (dx < 0) ? -1 : 1;
@@ -30,7 +32,7 @@ static void	draw_line_vert(t_fdf_point2d p0, t_fdf_point2d p1, t_fdf_ctrl *ctrl)
 	error = (2 * dx) - dy;
 	while (p0.y <= p1.y)
 	{
-		mlx_pixel_put(ctrl->mlx, ctrl->win, p0.x, p0.y, p1.color);
+		mlx_pixel_put(ctrl->mlx, ctrl->win, p0.x, p0.y, color);
 		if (error > 0)
 		{
 			p0.x += xi;
@@ -47,7 +49,9 @@ static void	draw_line_hor(t_fdf_point2d p0, t_fdf_point2d p1, t_fdf_ctrl *ctrl)
 	int				dy;
 	int				error;
 	int				yi;
+	unsigned long	color;
 
+	color = (p1.zval >= p0.zval) ? p1.color : p0.color;
 	dx = p1.x - p0.x;
 	dy = p1.y - p0.y;
 	yi = (dy < 0) ? -1 : 1;
@@ -55,7 +59,7 @@ static void	draw_line_hor(t_fdf_point2d p0, t_fdf_point2d p1, t_fdf_ctrl *ctrl)
 	error = (2 * dy) - dx;
 	while (p0.x <= p1.x)
 	{
-		mlx_pixel_put(ctrl->mlx, ctrl->win, p0.x, p0.y, 0xffffff);
+		mlx_pixel_put(ctrl->mlx, ctrl->win, p0.x, p0.y, color);
 		if (error > 0)
 		{
 			p0.y += yi;

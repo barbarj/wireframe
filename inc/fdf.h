@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 21:10:27 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/18 00:41:09 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct		s_fdf_point2d
 {
 	double			x;
 	double			y;
+	double			zval;
 	unsigned long	color;
 }					t_fdf_point2d;
 

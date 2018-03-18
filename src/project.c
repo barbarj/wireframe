@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 22:27:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 22:43:12 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/18 00:41:34 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static t_fdf_point2d	calc_iso_proj(t_fdf_point3d point, double scale_factor)
 	point = fdf_rot(point, M_PI / 6.0, 0, 0);
 	proj.x = point.x * scale_factor;
 	proj.y = point.y * scale_factor;
+	proj.zval = point.z;
 	proj.color = point.color;
 	return (proj);
 }

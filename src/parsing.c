@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 00:08:39 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 22:59:39 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/18 01:04:59 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ static unsigned int		get_color(char *hex)
 
 	hex_key = "0123456789abcdef";
 	color = 0;
-	len = ft_strlen(hex);
+	ft_strtolow(hex);
+	len = ft_strlen(hex) - 2;
+	hex += 2;
 	i = 0;
 	while (i < len)
 	{
-		pos = ft_strchr(hex_key, hex[i]);
 		color <<= 4;
-		color |= pos - hex_key;
+		pos = ft_strchr(hex_key, hex[i]);
+		if (pos)
+			color |= pos - hex_key;
 		i++;
 	}
 	return (color);
