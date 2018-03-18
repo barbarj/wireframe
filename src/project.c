@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform.c                                        :+:      :+:    :+:   */
+/*   project.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/16 16:15:30 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 18:35:25 by rhallste         ###   ########.fr       */
+/*   Created: 2018/03/17 19:11:03 by rhallste          #+#    #+#             */
+/*   Updated: 2018/03/17 19:11:56 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,25 @@
 #include "../libft/inc/libft.h"
 #include "../inc/fdf.h"
 
-static t_fdf_point2d	calc_iso_proj(t_fdf_point3d point3d)
+static t_fdf_point2d	calc_iso_proj(t_fdf_point3d point)
 {
 	t_fdf_point2d	proj;
-	static double	sqrt3;
-	static double	sqrt6;
-	double			tmp;
 	
-	if (!sqrt3)
-	{
-		sqrt3 = sqrt(3);
-		sqrt6 = sqrt(6);
-	}
-	tmp = ((point3d.x * sqrt3) - (point3d.z * sqrt3)) / sqrt6;
-	proj.x = ceil(tmp);
-	tmp = (point3d.x + (2 * point3d.y) + point3d.z) / sqrt6;
-	proj.y = ceil(tmp);
-	proj.color = 0xffffff;
+	point = fdf_rot(point, 0.61547, 0, -M_PI / 4);
+	proj.x = point.x;
+	proj.y = point.y;
+	proj.color = point.color;
 	return (proj);
 }
 
-static t_fdf_point2d	calc_mil_proj(t_fdf_point3d point3d)
+static t_fdf_point2d	calc_mil_proj(t_fdf_point3d point)
 {
 	t_fdf_point2d	proj;
-	static double	sinpi;
-	static double	cospi;
-	double			tmp;
-	
-	if (!sinpi)
-	{
-		sinpi = sin(-M_PI / 5);
-		cospi = cos(-M_PI / 5);
-	}
-	tmp = (point3d.x * cospi) - (point3d.y * sinpi);
-	proj.x = ceil(tmp) + (FDF_WINWIDTH / 10);
-	tmp = (point3d.x * sinpi) + (point3d.y * cospi) + point3d.z  + (FDF_WINHEIGHT / 1.5);
-	proj.y = ceil(tmp);
-	proj.color = 0xffffff;
+
+	point = fdf_rot(point, 0, 0, -(M_PI / 4));
+	proj.x = point.x;
+	proj.y = point.y + point.z;
+	proj.color = point.color;
 	return (proj);
 }
 

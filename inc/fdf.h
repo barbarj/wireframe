@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 17:21:31 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 19:10:22 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_fdf_point3d
 	int				x;
 	int				y;
 	int				z;
+	unsigned int	color;
 }					t_fdf_point3d;
 
 typedef struct		s_fdf_point2d
@@ -61,11 +62,16 @@ typedef struct		s_fdf_ctrl
 t_fdf_point3d	**fdf_parse_file(int fd, unsigned int *width, unsigned int *height);
 
 /*
-** Transformations
+** Projections
 */
 t_fdf_point2d	**fdf_proj(t_fdf_point3d **points3d, unsigned int width, unsigned int height, unsigned int proj);
 void			fdf_scale_to_window(t_fdf_point3d **points3d, double factor, unsigned int width, unsigned int height);
 double			fdf_calc_scale_factor(unsigned int width, unsigned int height, unsigned int proj);
+
+/*
+** Rotations
+*/
+t_fdf_point3d	fdf_rot(t_fdf_point3d point, double ang_x, double ang_y, double ang_z);
 
 /*
 ** Drawing
