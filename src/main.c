@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 19:51:09 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:09:50 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static t_fdf_point2d	**fill_2d_points(unsigned int width, unsigned int height)
 	{
 		if (!(points2d[h] = ft_memalloc(sizeof(t_fdf_point2d) * width)))
 			return (NULL);
+		h++;
 	}
 	return (points2d);
 }

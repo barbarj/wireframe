@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 19:52:38 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 20:19:26 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 # define FDF_H
 
 # define FDF_WINWIDTH 1200
-# define FDF_WINHEIGHT 800
-# define FDF_POINT_SEP 5
-# define FDF_ZMOD 5
-
-# define FDF_PROJISO 1
-# define FDF_PROJMIL 2
+# define FDF_WINHEIGHT 1200
+# define FDF_POINT_SEP 10
 
 typedef struct		s_fdf_point3d
 {
-	int				x;
-	int				y;
-	int				z;
+	double			x;
+	double			y;
+	double			z;
 	unsigned int	color;
 }					t_fdf_point3d;
 
 typedef struct		s_fdf_point2d
 {
-	int				x;
-	int				y;
+	double			x;
+	double			y;
 	unsigned long	color;
 }					t_fdf_point2d;
 
