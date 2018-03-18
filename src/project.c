@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 19:11:03 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 19:11:56 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/17 19:53:07 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_fdf_point2d	calc_iso_proj(t_fdf_point3d point)
 	return (proj);
 }
 
-static t_fdf_point2d	calc_mil_proj(t_fdf_point3d point)
+/*static t_fdf_point2d	calc_mil_proj(t_fdf_point3d point)
 {
 	t_fdf_point2d	proj;
 
@@ -35,75 +35,31 @@ static t_fdf_point2d	calc_mil_proj(t_fdf_point3d point)
 	proj.y = point.y + point.z;
 	proj.color = point.color;
 	return (proj);
-}
+}*/
 
-t_fdf_point2d	**fdf_proj(t_fdf_point3d **points3d, unsigned int width, unsigned int height, unsigned int proj)
+void					fdf_proj(t_fdf_matrix *matrix)
 {
-	t_fdf_point2d	**points2d;
-	t_fdf_point2d	(*calc_proj)(t_fdf_point3d);
+	double			scale_factor;
+	unsigned int	offset[2];
+	unsigned int	tmp_val;
 	unsigned int	w;
 	unsigned int	h;
 
-	if (proj == FDF_PROJISO)
-		calc_proj = &calc_iso_proj;
-	else if (proj == FDF_PROJMIL)
-		calc_proj = &calc_mil_proj;
-	
-	if(!(points2d = ft_memalloc(sizeof(t_fdf_point2d *) * height)))
-		return (NULL);
+	scale_factor = (FDF_WINWIDTH * 6.0) / (matrix->width * FDF_POINT_SEP * 10.0);
+	tmp_val = FDF_POINT_SEP * scale_factor / 2;
+	offset[0] = (FDF_WINWIDTH / 2) - (matrix->width * tmp_val);
+	offset[1] = (FDF_WINHEIGHT / 2) - (matrix->height * tmp_val);
 	h = 0;
-	while (h < height)
-	{
-		if (!(points2d[h] = ft_memalloc(sizeof(t_fdf_point2d) * width)))
-			return (NULL);
-		w = 0;
-		while (w < width)
-		{
-			points2d[h][w] = calc_proj(points3d[h][w]);
-			w++;
-		}
-		h++;
-	}
-	return (points2d);
-}
-
-double			fdf_calc_scale_factor(unsigned int width, unsigned int height, unsigned int proj)
-{
-	double ideal;
-	double ideal_height;
-
-	width *= FDF_POINT_SEP;
-	height *= FDF_POINT_SEP;
-	ideal = 1.0;
-	if (proj == FDF_PROJISO)
-	{
-		ideal = ((double)FDF_WINWIDTH / 1.5) / (double)width;
-		ideal_height= (double)FDF_WINHEIGHT / 1.2;
-		if (height * ideal > ideal_height)
-			ideal *= (ideal_height / (height * ideal));
-	}
-	else if (proj == FDF_PROJMIL)
-	{
-		ideal = 1.0;
-	}
-	return (ideal);
-}
-
-void			fdf_scale_to_window(t_fdf_point3d **points3d, double factor,
-									unsigned int width, unsigned height)
-{
-	unsigned int w;	
-	unsigned int h;
-
-	h = 0;
-	while (h < height)
+	while (h < matrix->height)
 	{
 		w = 0;
-		while (w < width)
+		while (w < matrix->width)
 		{
-			points3d[h][w].x = points3d[h][w].x * factor;
-			points3d[h][w].y = points3d[h][w].y * factor;
-			points3d[h][w].z = points3d[h][w].z * factor;
+			matrix->points2d[h][w] = calc_iso_proj(matrix->points3d[h][w]);
+			matrix->points2d[h][w].x *= scale_factor;
+			matrix->points2d[h][w].y *= scale_factor;
+			matrix->points2d[h][w].x += offset[0];
+			matrix->points2d[h][w].y += offset[1];
 			w++;
 		}
 		h++;
