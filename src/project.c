@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 22:27:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/18 00:41:34 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/18 01:15:54 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_fdf_point2d	calc_iso_proj(t_fdf_point3d point, double scale_factor)
 void					fdf_proj(t_fdf_matrix *matrix)
 {
 	double			scale_factor;
-	unsigned int	offset[2];
+	signed			offset[2];
 	unsigned int	w;
 	unsigned int	h;
 
@@ -38,7 +38,8 @@ void					fdf_proj(t_fdf_matrix *matrix)
 					/ (matrix->width * (double)FDF_POINT_SEP * 10);
 	offset[0] = ((double)FDF_WINWIDTH / 2.0)
 				- (matrix->width * (double)FDF_POINT_SEP * scale_factor / 2.0);
-	offset[1] = ((double)FDF_WINHEIGHT * 2.0) / 3.0;
+	offset[1] = ((double)FDF_WINHEIGHT)
+				- (matrix->height * (double)FDF_POINT_SEP * scale_factor / 1.5);
 	h = 0;
 	while (h < matrix->height)
 	{
