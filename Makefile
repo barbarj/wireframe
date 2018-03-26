@@ -6,7 +6,7 @@
 #    By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/18 09:37:14 by rhallste          #+#    #+#              #
-#    Updated: 2018/03/17 21:04:53 by rhallste         ###   ########.fr        #
+#    Updated: 2018/03/25 18:54:15 by rhallste         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -34,13 +34,13 @@ all: $(NAME)
 $(OBJS): $(SRCS)
 
 $(LIBFT):
-	@make -C libft/
+	make -C libft/
 
 $(MLX):
-	@make -C minilibx/
+	make -C minilibx/
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME) -framework OpenGL -framework AppKit
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME) -framework OpenGL -framework AppKit
 
 clean:
 	@rm -rf $(OBJS)
