@@ -6,15 +6,15 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 22:30:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/18 00:41:09 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/25 18:55:33 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define FDF_WINWIDTH 1200
-# define FDF_WINHEIGHT 1200
+# define FDF_WINWIDTH 800
+# define FDF_WINHEIGHT 600
 # define FDF_POINT_SEP 10
 
 typedef struct		s_fdf_point3d

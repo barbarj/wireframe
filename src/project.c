@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 22:27:15 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/18 01:15:54 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/25 19:08:49 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static t_fdf_point2d	calc_iso_proj(t_fdf_point3d point, double scale_factor)
 {
 	t_fdf_point2d	proj;
 
-	point = fdf_rot(point, 0, 0, -M_PI / 6.0);
-	point = fdf_rot(point, M_PI / 6.0, 0, 0);
+//	point = fdf_rot(point, 0, 0, -M_PI / 6.0);
+//	point = fdf_rot(point, M_PI / 6.0, 0, 0);
 	proj.x = point.x * scale_factor;
 	proj.y = point.y * scale_factor;
 	proj.zval = point.z;
@@ -34,12 +34,12 @@ void					fdf_proj(t_fdf_matrix *matrix)
 	unsigned int	w;
 	unsigned int	h;
 
-	scale_factor = ((double)FDF_WINWIDTH * 7.5)
-					/ (matrix->width * (double)FDF_POINT_SEP * 10);
+	scale_factor = ((double)FDF_WINWIDTH * 5.0)
+					/ (matrix->width * (double)FDF_POINT_SEP * 7.5);
 	offset[0] = ((double)FDF_WINWIDTH / 2.0)
-				- (matrix->width * (double)FDF_POINT_SEP * scale_factor / 2.0);
-	offset[1] = ((double)FDF_WINHEIGHT)
-				- (matrix->height * (double)FDF_POINT_SEP * scale_factor / 1.5);
+		- ((matrix->width - 1) * (double)FDF_POINT_SEP * scale_factor / 2.0);
+	offset[1] = ((double)FDF_WINHEIGHT / 2.0)
+		- ((matrix->height - 1) * (double)FDF_POINT_SEP * scale_factor / 2.0);
 	h = 0;
 	while (h < matrix->height)
 	{
