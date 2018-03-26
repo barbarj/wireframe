@@ -6,7 +6,7 @@
 /*   By: rhallste <rhallste@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 23:55:10 by rhallste          #+#    #+#             */
-/*   Updated: 2018/03/17 21:59:26 by rhallste         ###   ########.fr       */
+/*   Updated: 2018/03/25 19:16:57 by rhallste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ static int				handle_key(int key, void *ctrl_void)
 	t_fdf_ctrl	*ctrl;
 
 	ctrl = (t_fdf_ctrl *)ctrl_void;
+
+	//up = ## = positive rotation on x-axis;
+	//down = ## = negative rotation on x-axis;
+	//left = ## posotive rotation on y-axis;
+	//right = ## posotive rotation on x-axis;
 	if (key == 53)
 	{
 		mlx_destroy_window(ctrl->mlx, ctrl->win);
